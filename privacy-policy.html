@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy &mdash; Doc Expiry Tracker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: rgba(15, 23, 42, 0.92);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.4);
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.10), transparent 55%),
+        #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 22px 26px;
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card::before {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 60%);
+      top: -60px;
+      right: -80px;
+    }
+
+    .card::after {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 60%);
+      bottom: -50px;
+      left: -70px;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 2.2vw + 1rem, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    h1 span.badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .subtitle {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .meta {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.15), transparent 70%);
+      color: var(--muted);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      margin-top: 14px;
+      display: grid;
+      gap: 18px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.06), transparent 70%),
+                  radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95));
+      padding: 14px 14px 13px;
+    }
+
+    section h2 {
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    section h2 span.index {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    ul {
+      margin-top: 2px;
+      padding-left: 1.1rem;
+      list-style: disc;
+    }
+
+    li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .card {
+        border-radius: 22px;
+        padding: 20px 16px 18px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <article class="card">
+      <header>
+        <div class="title-block">
+          <h1>
+            Doc Expiry Tracker
+            <span class="badge">Privacy Policy</span>
+          </h1>
+          <p class="subtitle">
+            We do not collect, store, or sell your personal data. Your document
+            details stay on your device.
+          </p>
+          <div class="chip-row">
+            <span class="chip">No account required</span>
+            <span class="chip">Local‑only storage</span>
+            <span class="chip">Ad‑supported</span>
+          </div>
+        </div>
+        <div>
+          <p class="meta">Last updated: January 21, 2026</p>
+        </div>
+      </header>
+
+      <main>
+        <section>
+          <h2><span class="index">1</span> Overview</h2>
+          <p>
+            Doc Expiry Tracker ("the app") is designed to help you keep track
+            of your document expiry dates in a simple and private way. This
+            Privacy Policy explains how the app handles your information.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">2</span> No account or registration</h2>
+          <ul>
+            <li>The app does <strong>not</strong> require you to create an account.</li>
+            <li>We do <strong>not</strong> ask you to sign in with email, phone number,
+              or social accounts.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="index">3</span> Data we collect</h2>
+          <p>
+            We do <strong>not</strong> collect, store, or transmit any of your
+            personal data to our own servers.
+          </p>
+          <ul>
+            <li>
+              Document details you enter (such as names, dates, notes, and
+              categories) are stored <strong>only on your device</strong> as part of the
+              app’s normal operation.
+            </li>
+            <li>
+              We do not track your identity, precise location, or contacts.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="index">4</span> Third‑party ads</h2>
+          <p>
+            To keep the app free, we may display third‑party advertisements.
+            While we do not collect personal information ourselves, ad providers
+            may collect certain technical information from your device in order
+            to show relevant ads.
+          </p>
+          <ul>
+            <li>
+              Any data collected by third‑party ad networks is handled under
+              their own privacy policies, not ours.
+            </li>
+            <li>
+              We do not control how those third parties use or share their data.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><span class="index">5</span> Analytics and tracking</h2>
+          <ul>
+            <li>We do <strong>not</strong> use our own analytics tools inside the app.</li>
+            <li>We do <strong>not</strong> use our own cookies or tracking technologies.</li>
+          </ul>
+          <p>
+            Any tracking performed by third‑party ad networks is governed by
+            their individual privacy policies.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">6</span> Children’s privacy</h2>
+          <p>
+            The app is intended for general use. We do not knowingly collect
+            personal data from children. Because we do not operate our own user
+            accounts or remote databases, we do not have the ability to identify
+            or manage individual user records.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">7</span> Data retention and deletion</h2>
+          <ul>
+            <li>
+              All document data you enter is stored locally on your device.
+            </li>
+            <li>
+              Uninstalling the app from your device will remove the app’s local
+              data.
+            </li>
+          </ul>
+          <p>
+            If your device is backed up by your operating system or a cloud
+            service, those backups are controlled by your device or cloud
+            provider, not by us.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">8</span> Security</h2>
+          <p>
+            Because your document information stays on your device, its security
+            depends on how you protect your device (for example, with screen
+            locks, encryption, and backup settings). We do not have access to
+            your personal data and therefore cannot view, modify, or restore it.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">9</span> Changes to this Privacy Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. Any changes
+            will be published on this page, and the "Last updated" date at the
+            top will be revised. We encourage you to review this page
+            periodically for any updates.
+          </p>
+        </section>
+
+        <section>
+          <h2><span class="index">10</span> Contact</h2>
+          <p>
+            If you have any questions about this Privacy Policy or how Doc
+            Expiry Tracker works, please contact us using the contact details
+            provided in the app store listing.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>&copy; <span id="year"></span> Doc Expiry Tracker. All rights reserved.</span>
+        <span>Last updated: January 21, 2026</span>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
